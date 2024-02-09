@@ -183,9 +183,7 @@ class Forecaster:
                 data.drop(columns=self.data_schema.static_covariates, inplace=True)
 
         series_length = (
-            self.history_length
-            if self.history_length
-            else data.groupby(self.data_schema.id_col)[self.data_schema.target]
+            data.groupby(self.data_schema.id_col)[self.data_schema.target]
             .count()
             .iloc[0]
         )
